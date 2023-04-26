@@ -18,18 +18,28 @@
         var search
 
         $(document).ready(function () {
-            $("#search").text(question)
-            $("#title").text(`Goog search - ${question}`)
-            $("#searchinput").val(question)
-            $.getJSON(url, function (data) {
-                console.log(data);
-                search = data
-                search["items"].forEach(element => {
-                    $("#result").append(`<div id="result"><font face="Pixelated MS Sans Serif"><a href="${element["formattedUrl"]}"><b>${element["htmlTitle"]}</b></a><br><font size="-1">${element["htmlSnippet"]}</font></font></div><br>`)
+            if (params.time !== 12) {
+                $("#search").text(question)
+                $("#title").text(`Goog search - ${question}`)
+                $("#searchinput").val(question)
+                $.getJSON(url, function (data) {
+                    console.log(data);
+                    search = data
+                    search["items"].forEach(element => {
+                        $("#result").append(`<div id="result"><font face="Pixelated MS Sans Serif"><a href="${element["formattedUrl"]}"><b>${element["htmlTitle"]}</b></a><br><font size="-1">${element["htmlSnippet"]}</font></font></div><br><br>`)
+                    });
+                    $("#stats").html(`Results <b>1 - 10</b> of about <b>${search["searchInformation"]["formattedTotalResults"]}</b>. Search took <b>${search["searchInformation"]["searchTime"]} seconds.`)
+                    if(search["spelling"]) {
+                        $("#spelling").html(`Did you mean ${search["spelling"]["htmlCorrectedQuery"]}?`)
+                    }
                 });
-                $("#stats").html(`Results <b>1 - 10</b> of about <b>${search["searchInformation"]["formattedTotalResults"]}</b>. Search took <b>${search["searchInformation"]["searchTime"]} seconds.`)
-            });
+            } else {
+                $("#result").append(`Do1 not2 look3 at4 the5 moon6`)
+                $("#result").append(`<br>PMS`)
+            }
         });
+
+        
 
     </script>
 </head>
@@ -48,10 +58,8 @@
             <tr nowrap>
                 <td align="left" valign="middle">
                     <br><br>
-                    <form method="GET" action="/goog/searth/">
+                    <form method="GET" action="/search/">
                         <input type="text" name="q" size="31" maxlength="256" value="" id="searchinput">
-                        <input type="hidden" name="lr" value="">
-                        <input type="hidden" name="safe" value="off">
                         <input type="submit" name="btnG" value="Goog Search">
                         <input type="submit" name="btnI" value="I'm Feeling Lucky">
                     </form>
@@ -75,9 +83,13 @@
         </tbody>
     </table>
     <br>
+    <font face="Pixelated MS Sans Serif">
+        <div id="spelling">
 
-    <!-- The only css -->
-    <div id="result" style="min-height: calc(100vh - 215px);"> 
+        </div>
+    </font>
+    <br>
+    <div id="result"> 
 
     </div>
 
