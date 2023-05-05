@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Goog</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://jdan.github.io/98.css/98.css">
+    <link rel="stylesheet" href="https://wlodekm.github.io/98/startbar.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://ianrenton.github.io/web3point1/code.js"></script>
+    <script src="https://wlodekm.github.io/98lib.js"></script>
+    <script src="https://wlodekm.github.io/98/programs.js"></script>
+    <style>
+        body{background-color: teal;}
+        
+        .window {
+        position: absolute;
+        }
+        .window .title-bar {
+        cursor: move;
+        }
+        p          {-webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */user-select: none; /* Standard syntax */}
+        .title-bar {-webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */user-select: none; /* Standard syntax */}
+        label      {-webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */user-select: none; /* Standard syntax */}
+        button     {-webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */user-select: none; /* Standard syntax */}
+        legend     {-webkit-user-select: none; /* Safari */-ms-user-select: none; /* IE 10 and IE 11 */user-select: none; /* Standard syntax */}
+    </style>
+    <style>
+        * {
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        :root {
+            --scrollbar-button-inner-size: 9px;
+            --ActiveTitle: rgb(0, 0, 128);
+            --Background: rgb(0, 128, 128);
+            --Hilight: rgb(0, 0, 128);
+            --HilightText: rgb(255, 255, 255);
+            --TitleText: rgb(255, 255, 255);
+            --Window: rgb(255, 255, 255);
+            --WindowText: rgb(0, 0, 0);
+            --Scrollbar: rgb(192, 192, 192);
+            --InactiveTitle: rgb(128, 128, 128);
+            --Menu: rgb(192, 192, 192);
+            --WindowFrame: rgb(0, 0, 0);
+            --MenuText: rgb(0, 0, 0);
+            --ActiveBorder: rgb(192, 192, 192);
+            --InactiveBorder: rgb(192, 192, 192);
+            --AppWorkspace: rgb(128, 128, 128);
+            --ButtonFace: rgb(192, 192, 192);
+            --ButtonShadow: rgb(128, 128, 128);
+            --GrayText: rgb(128, 128, 128);
+            --ButtonText: rgb(0, 0, 0);
+            --InactiveTitleText: rgb(192, 192, 192);
+            --ButtonHilight: rgb(255, 255, 255);
+            --ButtonDkShadow: rgb(0, 0, 0);
+            --ButtonLight: rgb(192, 192, 192);
+            --InfoText: rgb(0, 0, 0);
+            --InfoWindow: rgb(255, 255, 225);
+        }
+
+        body {
+            background: #008080;
+        }
+
+        .taskbar {
+            outline: 1px solid var(--ButtonLight);
+            border-top: 1px solid var(--ButtonHilight);
+            background: var(--ButtonFace);
+            color: var(--ButtonText);
+        }
+
+        .taskbar {
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 27px;
+            display: flex;
+            flex: 1;
+        }
+
+        .tasks {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            min-width: 0;
+        }
+
+        .inset-shallow {
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(128, 128, 128) rgb(255, 255, 255) rgb(255, 255, 255) rgb(128, 128, 128);
+            border-color: var(--ButtonShadow) var(--ButtonHilight) var(--ButtonHilight) var(--ButtonShadow);
+            background-color: rgb(192, 192, 192);
+            background-color: var(--ButtonFace);
+            color: rgb(0, 0, 0);
+            color: var(--ButtonText);
+        }
+
+        .taskbar button,
+        .taskbar-divider,
+        .tray {
+            margin: 2px;
+        }
+
+        .tray {
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+            /* align-content: center; */
+            /* justify-content: center; */
+            line-height: 22px;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        .tray-icons {
+            display: flex;
+            align-items: center;
+            margin-left: 2px;
+        }
+
+        .taskbar .start-button {
+            flex-shrink: 0;
+            padding: 2px 4px;
+        }
+
+        .taskbar button {
+            line-height: 14px;
+            padding: 2px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .taskbar button,
+        .taskbar-divider,
+        .tray {
+            margin: 2px;
+        }
+
+        button.start-button {
+            display: flex;
+            max-width: min-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window ui-draggable ui-resizable selectedwindow"
+        style="width: 120px; z-index: 102; left: 193px; top: 109px;" id="window">
+        <div class="title-bar ui-draggable-handle" id="windowheader">
+            <div class="title-bar-text" style="display: flex;align-items: center;">
+                <img src="https://98.js.org/images/icons/html-16x16.png" width="16" height="16" draggable="false" style="width: 16px; height: 16px;">
+                Alert!
+            </div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closewindow('window')"></button>
+            </div>
+        </div>
+        <div class="window-body" id="windowcontent">
+            <p>This is a test of 98.css!</p>
+            <br>
+            <section class="field-row" style="justify-content: flex-end">
+                <button onclick="closewindow('window')">OK</button>
+            </section>
+        </div>
+        <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+        </div>
+        <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+        <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+    </div>
+    <div class="taskbar" style="z-index: 5000;">
+        <button class="start-button toggle" title="Click here to begin.">
+            <img src="https://98.js.org/images/start.png">
+            &nbsp;&nbsp;
+            <b>Start</b>
+        </button>
+        <div class="taskbar-divider"></div>
+        <!-- TODO: pinned apps and resizing handles -->
+        <div class="tasks"></div>
+        <div class="taskbar-divider"></div>
+        <div class="tray inset-shallow">
+            <div class="tray-icons">
+                <img class="tray-icon" src="https://98.js.org/images/icons/task-scheduler-16x16.png"
+                    title="Task Scheduler is not ready."
+                    onclick="showMessageBox({iconID: 'info', message: 'Good day to you!'})">
+                <img class="tray-icon" src="https://98.js.org/images/icons/audio-okay-16x16.png" title="Volume"
+                    onclick="showMessageBox({iconID: 'info', message: 'Have a wonderful day!'})">
+            </div>
+            <div class="taskbar-time"
+                ondblclick="showMessageBox({iconID: 'info', message: 'Time to get an old clock!'})"
+                title="четвер, 27 квітня о 11:39">11:39</div>
+        </div>
+    </div>
+</body>
+
+</html>

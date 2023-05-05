@@ -1,0 +1,207 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Goog</title>
+    <link href="https://98.js.org/layout.css" rel="stylesheet" type="text/css">
+    <link href="https://98.js.org/classic.css" rel="stylesheet" type="text/css">
+    <link href="https://98.js.org/lib/os-gui/layout.css" rel="stylesheet" type="text/css">
+    <link href="https://98.js.org/lib/os-gui/windows-98.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="https://98.js.org/images/icons/html-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="https://98.js.org/images/icons/explorer-32x32.png" sizes="32x32" type="image/png">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src="https://98.js.org/lib/jquery.min.js"></script>
+    <script src="chrome-extension://donbcfbmhbcapadipfkeojnmajbakjdc/dist/ruffle.js?id=91729773333"></script>
+    <script src="https://98.js.org/lib/browserfs.js"></script>
+    <script src="https://98.js.org/src/filesystem-setup.js"></script>
+    <script src="https://98.js.org/lib/os-gui/MenuBar.js"></script>
+    <script src="https://98.js.org/lib/os-gui/$Window.js"></script>
+    <script src="https://98.js.org/src/msgbox.js"></script>
+    <script src="https://98.js.org/src/iframe-windows.js"></script>
+    <script>defaultMessageBoxTitle = "Explorer";</script>
+    <script src="https://98.js.org/src/helpers.js"></script>
+    <script src="https://98.js.org/src/FolderView.js"></script>
+    <script src="https://98.js.org/src/FolderViewItem.js"></script>
+    <!-- <script src="https://98.js.org/programs/explorer/menus.js"></script>
+    <script src="https://98.js.org/programs/explorer/explorer.js"></script> -->
+    <link href="https://98.js.org/programs/explorer/explorer.css" rel="stylesheet" type="text/css">
+<style>body{
+--global-bg: var(--Background);
+}
+.desktop {
+background: var(--global-bg) !important;
+}
+iframe html body #Panel {
+background: black !important;
+display: none;
+}</style></head>
+<body class="">
+    <div class="toolbars">
+    <div class="toolbar" id="menu-bar-toolbar">
+        <div class="toolbar-drag-handle"></div>
+    <div class="menus" role="menubar" aria-label="Application Menu" aria-owns=" menu-popup-014wpr9uzr5x menu-popup-hkxpxq7bpdlk menu-popup-qmqzin3ci9bp menu-popup-1mdwdtt5rh7pk menu-popup-1wdzt1jy0gtdc menu-popup-218num2yqb0ab menu-popup-2bhp1jyh57onh" style="touch-action: none;"><div class="menu-button file-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;File-gufhms6okr3j" aria-controls="menu-popup-014wpr9uzr5x" tabindex="-1"><span class="menu-hotkey">F</span>ile</div><div class="menu-button edit-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;Edit-pm51j3v7yxr" aria-controls="menu-popup-hkxpxq7bpdlk" tabindex="-1"><span class="menu-hotkey">E</span>dit</div><div class="menu-button view-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;View-1lbx39ur05zmt" aria-controls="menu-popup-qmqzin3ci9bp" tabindex="-1"><span class="menu-hotkey">V</span>iew</div><div class="menu-button go-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;Go-1vu9odsjgxq4j" aria-controls="menu-popup-1mdwdtt5rh7pk" tabindex="-1"><span class="menu-hotkey">G</span>o</div><div class="menu-button favorites-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-F&amp;avorites-202as4d4f1qcf" aria-controls="menu-popup-1wdzt1jy0gtdc" tabindex="-1">F<span class="menu-hotkey">a</span>vorites</div><div class="menu-button tools-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;Tools-2a7juylu16jmc" aria-controls="menu-popup-218num2yqb0ab" tabindex="-1"><span class="menu-hotkey">T</span>ools</div><div class="menu-button help-menu-button" aria-expanded="false" aria-haspopup="true" role="menuitem" id="menu-button-&amp;Help-2e40ew33bz84c" aria-controls="menu-popup-2bhp1jyh57onh" tabindex="-1"><span class="menu-hotkey">H</span>elp</div></div></div>
+    <div class="toolbar" id="standard-buttons-toolbar">
+    <div class="toolbar-drag-handle"></div>
+    <div id="standard-buttons" style="display: none;">
+        <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight back-button" disabled="disabled">
+                <span class="label-text">Back</span>
+            <div class="icon" style="background-position: 0px 0px;"></div></button>
+            <button class="toolbar-dropdown-button lightweight back-dropdown-button" disabled="disabled">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div>
+        <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight forward-button" disabled="disabled">
+                <span class="label-text">Forward</span>
+            <div class="icon" style="background-position: -20px 0px;"></div></button>
+            <button class="toolbar-dropdown-button lightweight forward-dropdown-button" disabled="disabled">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div>
+        <button class="toolbar-button lightweight up-button">
+            <span class="label-text">Up</span>
+        <div class="icon" style="background-position: -880px 0px;"></div></button>
+        <hr aria-orientation="vertical">
+        <button class="toolbar-button lightweight cut-button">
+            <span class="label-text">Cut</span>
+        <div class="icon" style="background-position: -420px 0px;"></div></button>
+        <button class="toolbar-button lightweight copy-button">
+            <span class="label-text">Copy</span>
+        <div class="icon" style="background-position: -440px 0px;"></div></button>
+        <button class="toolbar-button lightweight paste-button">
+            <span class="label-text">Paste</span>
+        <div class="icon" style="background-position: -460px 0px;"></div></button>
+        <hr aria-orientation="vertical">
+        <button class="toolbar-button lightweight undo-button">
+            <span class="label-text">Undo</span>
+        <div class="icon" style="background-position: -480px 0px;"></div></button>
+        <hr aria-orientation="vertical">
+        <button class="toolbar-button lightweight delete-button">
+            <span class="label-text">Delete</span>
+        <div class="icon" style="background-position: -520px 0px;"></div></button>
+        <button class="toolbar-button lightweight properties-button">
+            <span class="label-text">Properties</span>
+        <div class="icon" style="background-position: -620px 0px;"></div></button>
+        <hr aria-orientation="vertical">
+        <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight cycle-view-mode-button">
+                <span class="label-text">Views</span>
+            <div class="icon" style="background-position: -760px 0px;"></div></button>
+            <button class="toolbar-dropdown-button lightweight views-dropdown-button">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div>
+    </div>
+    <div id="internet-buttons">
+        <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight back-button" disabled="disabled">
+                <span class="label-text">Back</span>
+            <div class="icon" style="background-position: 0px 0px;"></div></button>
+            <button class="toolbar-dropdown-button lightweight back-dropdown-button" disabled="disabled">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div>
+        <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight forward-button" disabled="disabled">
+                <span class="label-text">Forward</span>
+            <div class="icon" style="background-position: -20px 0px;"></div></button>
+            <button class="toolbar-dropdown-button lightweight forward-dropdown-button" disabled="disabled">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div>
+        <button class="toolbar-button lightweight stop-button"><span class="label-text">Stop</span><div class="icon" style="background-position: -40px 0px;"></div></button>
+        <button class="toolbar-button lightweight refresh-button"><span class="label-text">Refresh</span><div class="icon" style="background-position: -60px 0px;"></div></button>
+        <button class="toolbar-button lightweight home-button"><span class="label-text">Home</span><div class="icon" style="background-position: -80px 0px;"></div></button>
+        <hr aria-orientation="vertical">
+        <button class="toolbar-button lightweight toggle search-button"><span class="label-text">Search</span><div class="icon" style="background-position: -100px 0px;"></div></button>
+        <button class="toolbar-button lightweight toggle favorites-button"><span class="label-text">Favorites</span><div class="icon" style="background-position: -120px 0px;"></div></button>
+        <button class="toolbar-button lightweight toggle history-button"><span class="label-text">History</span><div class="icon" style="background-position: -240px 0px;"></div></button>
+        <!-- <div class="toolbar-compound-button-wrapper">
+            <button class="toolbar-button lightweight mail-button" disabled>
+                <span class="label-text">Mail</span>
+            </button>
+            <button class="toolbar-dropdown-button lightweight mail-dropdown-button" disabled>
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z"></path></svg>
+            </button>
+        </div> -->
+        <hr aria-orientation="vertical">
+        <button class="toolbar-button lightweight print-button"><span class="label-text">Print</span><div class="icon" style="background-position: -140px 0px;"></div></button>
+    </div>
+    </div>
+    <div class="toolbar" id="address-bar-toolbar">
+    <div class="toolbar-drag-handle"></div>
+    <div id="address-bar">
+        <!-- @TODO: d access key -->
+        <label for="address">Address</label>
+        <div id="address-compound-input" class="inset-deep">
+            <img id="address-icon" width="16" height="16" src="https://98.js.org/images/icons/html-16x16.png" alt="">
+            <input type="text" id="address" autocomplete="off">
+            <button id="address-dropdown-button" disabled="">
+                <!-- Outer SVG must not have the transform, because it has a filter when disabled which would get rotated. -->
+                <!-- @TODO: compute triangle graphics based on system metrics -->
+                <!-- <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle;transform:rotate(90deg)"><path d="m6 7 3 3-3 3z"></path></svg> -->
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle"><path style="transform:rotate(90deg);transform-origin:center" d="m5 6 4 4-4 4z"></path></svg>
+                <!-- <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle;transform:rotate(90deg)"><path d="m6 4 5 5-5 5z"></path></svg> -->
+        </button>
+            <!-- TODO: functional dropdown, autocompleting file/folder paths -->
+        </div>
+    </div>
+    </div>
+    </div>
+    <div id="content" class="inset-deep">
+        <iframe src="../" allowfullscreen="allowfullscreen" sandbox="allow-same-origin allow-scripts allow-forms allow-pointer-lock allow-modals allow-popups" allow="camera https://brie.fi;microphone https://brie.fi" style="min-width: 0px; min-height: 0px; flex: 1 1 1px; border: 0px;" data-ruffle-polyfilled=""></iframe></div>
+    <div id="status-bar">
+        <div id="status-bar-left" class="inset-shallow" style="display: block;">
+            <img id="status-bar-left-icon" style="display: none;" width="16" height="16" src="https://98.js.org/images/icons/folder-16x16.png" alt="">
+            <span id="status-bar-left-text"></span>
+        </div>
+        <div id="status-bar-middle" class="inset-shallow" style="display: block;">
+            <span id="status-bar-middle-text"></span>
+        </div>
+        <div id="status-bar-right" class="inset-shallow" style="display: flex;">
+            <img id="status-bar-right-icon" width="16" height="16" src="https://98.js.org/images/icons/zone-internet-16x16.png" alt="">
+            <span id="status-bar-right-text">Internet</span>
+        </div>
+        <!-- for menu descriptions, replace left/middle/right layout with non-inset, singular area -->
+        <div id="status-bar-simple" style="display: none;">
+            <img id="status-bar-simple-icon" width="16" height="16" src="https://98.js.org/images/icons/my-computer-16x16.png" alt="">
+            <span id="status-bar-simple-text"></span>
+        </div>
+    </div>
+
+    <!-- TODO: DRY -->
+    <svg style="position: absolute; pointer-events: none; bottom: 100%;">
+        <defs>
+            <filter id="disabled-inset-filter" x="0" y="0" width="1px" height="1px">
+                <feColorMatrix in="SourceGraphic" type="matrix" values="
+                        1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        -2 -2 -2 4 0
+                    " result="dark-parts-isolated"></feColorMatrix>
+                <feFlood result="shadow-color" flood-color="var(--ButtonShadow)"></feFlood>
+                <feFlood result="hilight-color" flood-color="var(--ButtonHilight)"></feFlood>
+                <feOffset in="dark-parts-isolated" dx="1" dy="1" result="offset"></feOffset>
+                <feComposite in="hilight-color" in2="offset" operator="in" result="hilight-colored-offset"></feComposite>
+                <feComposite in="shadow-color" in2="dark-parts-isolated" operator="in" result="shadow-colored"></feComposite>
+                <feMerge>
+                    <feMergeNode in="hilight-colored-offset"></feMergeNode>
+                    <feMergeNode in="shadow-colored"></feMergeNode>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <script>
+        window.addEventListener("resize", ()=> {
+            // work around a browser bug in Chrome where
+            // the SVG filter behaves differently based on the INITIAL zoom level
+            // (if you zoom in, the icons get cut off, if you zoom out, the effect is too thick)
+            document.getElementById("disabled-inset-filter").setAttribute("x", "0");
+        });
+    </script>
+
+
+<div class="menu-popup" id="menu-popup-1mdwdtt5rh7pk" tabindex="-1" role="menu" data-semantic-parent="menu-button-&amp;Go-1vu9odsjgxq4j" aria-labelledby="menu-button-&amp;Go-1vu9odsjgxq4j" dir="ltr" style="touch-action: pan-y; outline: none; position: absolute; left: 105.391px; top: 22px; z-index: 1005; display: none;"><table class="menu-popup-table"><tr class="menu-row menu-item" id="menu-item-1nvo23mgdta8f" tabindex="-1" role="menuitem" aria-label="Back" aria-keyshortcuts="Alt+Left Arrow" aria-description="Goes to the previous page." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">B</span>ack</td><td class="menu-item-shortcut">Alt+Left Arrow</td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1ovpj6lleoaaa" tabindex="-1" role="menuitem" aria-label="Forward" aria-keyshortcuts="Alt+Right Arrow" aria-description="Goes to the next page." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">F</span>orward</td><td class="menu-item-shortcut">Alt+Right Arrow</td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1p2pesxlj8pam" tabindex="-1" role="menuitem" aria-label="Up One Level" aria-keyshortcuts="undefined" aria-description="Goes up one level."><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">U</span>p One Level</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row"><td colspan="4"><hr class="menu-hr"></td></tr><tr class="menu-row menu-item" id="menu-item-1qlac9v09wh" tabindex="-1" role="menuitem" aria-label="Home Page" aria-keyshortcuts="Alt+Home" aria-description="Goes to your home page."><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">H</span>ome Page</td><td class="menu-item-shortcut">Alt+Home</td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1r5097te3kkym" tabindex="-1" role="menuitem" aria-label="Channel Guide" aria-keyshortcuts="undefined" aria-description="Opens the Channel Guide Web page."><td class="menu-item-checkbox-area"></td><td class="menu-item-label">Channel <span class="menu-hotkey">G</span>uide</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1s6popln67796" tabindex="-1" role="menuitem" aria-label="Search the Web" aria-keyshortcuts="undefined"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">S</span>earch the Web</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row"><td colspan="4"><hr class="menu-hr"></td></tr><tr class="menu-row menu-item" id="menu-item-1t56zuroulhof" tabindex="-1" role="menuitem" aria-label="My Computer" aria-keyshortcuts="undefined" aria-description="Opens My Computer."><td class="menu-item-checkbox-area"></td><td class="menu-item-label">My <span class="menu-hotkey">C</span>omputer</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1u2x6oksfqxog" tabindex="-1" role="menuitem" aria-label="Internet Call" aria-keyshortcuts="undefined" aria-description="Opens your Internet call and meeting program."><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">I</span>nternet Call</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr></table></div><div class="menu-popup" id="menu-popup-218num2yqb0ab" tabindex="-1" role="menu" aria-owns=" menu-popup-23qf2n1627lo" data-semantic-parent="menu-button-&amp;Tools-2a7juylu16jmc" aria-labelledby="menu-button-&amp;Tools-2a7juylu16jmc" dir="ltr" style="touch-action: pan-y; outline: none; position: absolute; left: 187.516px; top: 22px; z-index: 1011; display: none;"><table class="menu-popup-table"><tr class="menu-row menu-item has-submenu" id="menu-item-22m77urznr6mf" tabindex="-1" role="menuitem" aria-label="Find" aria-keyshortcuts="undefined" aria-haspopup="true" aria-expanded="false" aria-controls="menu-popup-23qf2n1627lo"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">F</span>ind</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" style="fill:currentColor;display:inline-block;vertical-align:middle">
+                        <path d="m6 4 4 4-4 4z"></path>
+                    </svg>
+                </td></tr><tr class="menu-row"><td colspan="4"><hr class="menu-hr"></td></tr><tr class="menu-row menu-item" id="menu-item-2794tytbuqzy5" tabindex="-1" role="menuitem" aria-label="Map Network Drive..." aria-keyshortcuts="undefined" aria-description="Connects to a network drive." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label">Map <span class="menu-hotkey">N</span>etwork Drive...</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-28q18fak1wpsq" tabindex="-1" role="menuitem" aria-label="Disconnect Network Drive..." aria-keyshortcuts="undefined" aria-description="Disconnects from a network drive." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">D</span>isconnect Network Drive...</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-29l4ut92fx26" tabindex="-1" role="menuitem" aria-label="Synchronize..." aria-keyshortcuts="undefined" aria-description="Updates all offline content." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">S</span>ynchronize...</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr></table></div><div class="menu-popup" id="menu-popup-2bhp1jyh57onh" tabindex="-1" role="menu" data-semantic-parent="menu-button-&amp;Help-2e40ew33bz84c" aria-labelledby="menu-button-&amp;Help-2e40ew33bz84c" dir="ltr" style="touch-action: pan-y; outline: none; position: absolute; left: 224.703px; top: 22px; z-index: 1009; display: none;"><table class="menu-popup-table"><tr class="menu-row menu-item" id="menu-item-2cpvrwe163ix9" tabindex="-1" role="menuitem" aria-label="Help Topics" aria-keyshortcuts="undefined" aria-description="Opens Help." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">H</span>elp Topics</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row"><td colspan="4"><hr class="menu-hr"></td></tr><tr class="menu-row menu-item" id="menu-item-2dbmpcy7t0fjv" tabindex="-1" role="menuitem" aria-label="About 98.js.org" aria-keyshortcuts="undefined" aria-description="Opens the 98.js project Web page."><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">A</span>bout 98.js.org</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr></table></div><div class="menu-popup" id="menu-popup-1wdzt1jy0gtdc" tabindex="-1" role="menu" data-semantic-parent="menu-button-F&amp;avorites-202as4d4f1qcf" aria-labelledby="menu-button-F&amp;avorites-202as4d4f1qcf" dir="ltr" style="touch-action: pan-y; outline: none; position: absolute; left: 130.656px; top: 22px; z-index: 1010; display: none;"><table class="menu-popup-table"><tr class="menu-row menu-item" id="menu-item-1xxl8615bpkh" tabindex="-1" role="menuitem" aria-label="Add to Favorites..." aria-keyshortcuts="undefined" aria-description="Adds the current page to your Favorites list." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">A</span>dd to Favorites...</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row menu-item" id="menu-item-1yruugci0k9fa" tabindex="-1" role="menuitem" aria-label="Organize Favorites..." aria-keyshortcuts="undefined" aria-description="Opens the Favorites folder." disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label"><span class="menu-hotkey">O</span>rganize Favorites...</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr><tr class="menu-row"><td colspan="4"><hr class="menu-hr"></td></tr><tr class="menu-row menu-item" id="menu-item-1z3ex4bae4yt8" tabindex="-1" role="menuitem" aria-label="(Empty)" aria-keyshortcuts="undefined" disabled="" aria-disabled="true"><td class="menu-item-checkbox-area"></td><td class="menu-item-label">(Empty)</td><td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td></tr></table></div></body></html>
